@@ -9,7 +9,7 @@ const con=mongoose.connection
 app.use(express.json())
 
 con.on('open',function(){
-    console.log("connected to db")
+    console.log("connected to database")
 })
 
 
