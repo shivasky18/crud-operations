@@ -1,11 +1,11 @@
-const Alien = require("../model/schema");
+const schema = require("../model/schema");
 const exp = require("express");
 const router = exp.Router();
 router.get("/", async (req, res) => {
   console.log("alien router");
 //   res.send("alien router");
   try {
-      const aliens=await Alien.find()
+      const aliens=await schema.find()
       res.json(aliens)
   } catch (error) {
       res.send("error")
@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
   }
 });
 router.post("/", async (req, res) => {
-  const a = new Alien({
+  const a = new schema({
     name: req.body.name,
     tech: req.body.tech,
     sub: req.body.sub,
@@ -29,7 +29,7 @@ router.post("/", async (req, res) => {
 router.get("/:name", async (req, res) => {
     const name=req.params.name;
     try {
-        const aliens=await Alien.find({name:name})
+        const aliens=await schema.find({name:name})
         res.send(aliens)
     } catch (error) {
         res.send("error")
@@ -40,7 +40,7 @@ module.exports = router;
 router.delete("/:name", async (req, res) => {
     const name=req.params.name;
     try {
-        const aliens=await Alien.deleteOne({name:name})
+        const aliens=await schema.deleteOne({name:name})
         res.send(aliens)
     } catch (error) {
         res.send("error")
@@ -48,11 +48,12 @@ router.delete("/:name", async (req, res) => {
     }
   });
   router.patch("/:name", async (req, res) => {
-    // const name=req.params.name;
+    const name=req.params.name;
+    // console.log(name)
     try {
-        const aliens=await Alien.findOne({name:req.params.name})
+        const aliens=await schema.findOne({name:name})
         // console.log(aliens);
-        aliens.sub=req.body.sub
+        aliens.locality=req.body.locality
         // console.log(aliens)
         const a1= await aliens.save()
         res.send(aliens)
