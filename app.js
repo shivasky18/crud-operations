@@ -1,7 +1,7 @@
 const express=require("express");
 const mongoose=require("mongoose");
 const url='mongodb://localhost/student'
-const alienrouter=require("./Routes/aliens")
+const alienrouter=require("./Routes/connections")
 const app=express()
 const port =9000;
 mongoose.connect(url)

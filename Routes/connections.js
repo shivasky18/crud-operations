@@ -1,4 +1,4 @@
-const Alien = require("../model/alien");
+const Alien = require("../model/schema");
 const exp = require("express");
 const router = exp.Router();
 router.get("/", async (req, res) => {
