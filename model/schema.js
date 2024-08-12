@@ -10,10 +10,16 @@ const schema=new mongoose.Schema({
         required:true
 
     },
+    locality:{
+        type:String,
+        required:true,
+        default:"kokapet"
+    },
     sub:{
         type:Boolean,
         required:true,
         default:false
     }
+
 })
 module.exports=mongoose.model('alien',schema)
