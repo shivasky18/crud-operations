@@ -22,4 +22,4 @@ const schema=new mongoose.Schema({
     }
 
 })
-module.exports=mongoose.model('details',schema)
+module.exports=mongoose.model('aliens',schema)
